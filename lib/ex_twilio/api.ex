@@ -69,7 +69,7 @@ defmodule ExTwilio.Api do
     data = format_data(data)
     IO.inspect(data)
     IO.inspect(options)
-    IO.inspecrt(auth_header(options))
+    IO.inspect(auth_header(options))
 
     module
     |> Url.build_url(nil, options)
