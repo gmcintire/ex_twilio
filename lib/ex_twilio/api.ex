@@ -67,14 +67,18 @@ defmodule ExTwilio.Api do
   @spec create(atom, data, list) :: Parser.success() | Parser.error()
   def create(module, data, options \\ []) do
     data = format_data(data)
-    IO.inspect(data)
-    IO.inspect(options)
-    IO.inspect(auth_header(options))
+    IO.inspect(data, label: "data")
+    IO.inspect(options, label: "options")
+    IO.inspect(auth_header(options), label: "auth_header")
 
     module
+    |> IO.inspect()
     |> Url.build_url(nil, options)
+    |> IO.inspect()
     |> Api.post!(data, auth_header(options))
+    |> IO.inspect()
     |> Parser.parse(module)
+    |> IO.inspect()
   end
 
   @doc """
